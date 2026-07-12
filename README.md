@@ -152,14 +152,13 @@ The test script outputs:
 
 ### 4.1 Pipeline
 
-CFB-Net adopts a weight-sharing Siamese MobileNetV2 backbone pre-trained on ImageNet. Bi-temporal SAR images are fed into the two branches to extract five-level features. The MSAB then unifies multi-level features at five spatial scales with parallel dilated convolutions. A Temporal Feature Fusion (TFF) module with spatial attention re-weights the features before computing absolute differences. Finally, the CSFB-based decoder progressively fuses deep semantic features with shallow detail features in the frequency domain, producing change maps with deep supervision at four scales.
+CFB-Net adopts a weight-sharing Siamese MobileNetV2 backbone pre-trained on ImageNet. Bi-temporal SAR images are fed into the two branches to extract five-level features. The MSAB then unifies multi-level features at five spatial scales with parallel dilated convolutions. Finally, the CSFB-based decoder progressively fuses deep semantic features with shallow detail features in the frequency domain, producing change maps with deep supervision at four scales.
 
 ### 4.2 Key Modules
 
 | Module | Description |
 |:-------|:------------|
 | **MSAB** | Multi-Scale Semantic-Aware Bottleneck — projects 5 backbone features to 5 spatial scales via pooling/interpolation, applying parallel dilated convolutions (rates 1, 4, 9) with inverted bottleneck structure for comprehensive multi-scale perception. |
-| **TFF** | Temporal Feature Fusion — learns spatial attention weights to re-weight bi-temporal features before absolute difference computation, suppressing background and pseudo-changes. |
 | **CSFB** | Cross-Level Semantic-Guided Frequency Boundary-Aware — uses FFT-based frequency-domain correlation between deep (Query) and shallow (Key) features, with multi-head gating to adaptively re-weight boundary details while preserving low-frequency flood body structure. |
 
 <p align="center">
