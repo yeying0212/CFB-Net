@@ -388,16 +388,4 @@ All code is provided for academic use only.
 
 ---
 
-## 9. Citation
 
-If you find this work useful, please cite our paper:
-
-```bibtex
-@article{yang2025cfbnet,
-    title={Cross-Level Frequency-Domain Boundary-Aware Lightweight Network for SAR Flood Detection},
-    author={Yang, Xingye and Wei, Tianyu and Gao, Lyuzhou and Liu, Wenchao and Wang, Jue and Chen, Liang},
-    journal={IEEE Transactions on Geoscience and Remote Sensing},
-    year={2025},
-    note={under review}
-}
-```
