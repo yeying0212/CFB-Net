@@ -60,13 +60,7 @@ The experiments are conducted on two publicly available SAR flood detection data
 
 - **ETCI-2021:** Released for the NASA IMPACT ETCI 2021 Competition on Flood Detection. After data cleaning, 20,758 image pairs (256×256) spanning five geographic regions. Split into train/val/test at 8:1:1 ratio.
 
-The codebase also supports general change detection datasets:
 
-- [**LEVIR-CD**](https://www.dropbox.com/s/18fb5jo0npu5evm/LEVIR-CD256.zip?dl=0)
-- [**WHU-CD**](https://www.dropbox.com/s/r76a00jcxp5d3hl/WHU-CD-256.zip?dl=0)
-- [**CDD-CD**](https://www.dropbox.com/s/ls9fq5u61k8wxwk/CDD.zip?dl=0)
-- [**SYSU-CD**](https://github.com/liumency/SYSU-CD)
-- [**DSIFN-CD**](https://github.com/GeoZcx/A-deeply-supervised-image-fusion-network-for-change-detection-in-high-resolution-bi-temporal-remote-sensing-images)
 
 #### Dataset Structure
 
@@ -112,7 +106,7 @@ Or directly:
 python ./train_test_tools/train.py \
     --file_root <dataset_name> \
     --lr 5e-4 \
-    --max_steps 40000 \
+    --max_steps 100ep \
     --batch_size 16 \
     --inWidth 256 \
     --inHeight 256
@@ -394,16 +388,4 @@ All code is provided for academic use only.
 
 ---
 
-## 9. Citation
 
-If you find this work useful, please cite our paper:
-
-```bibtex
-@article{yang2025cfbnet,
-    title={Cross-Level Frequency-Domain Boundary-Aware Lightweight Network for SAR Flood Detection},
-    author={Yang, Xingye and Wei, Tianyu and Gao, Lyuzhou and Liu, Wenchao and Wang, Jue and Chen, Liang},
-    journal={IEEE Transactions on Geoscience and Remote Sensing},
-    year={2025},
-    note={under review}
-}
-```
