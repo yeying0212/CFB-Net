@@ -148,6 +148,29 @@ class GraphNeighborModule(nn.Module):
 
 # ==================== DIA ====================
 
+class ChannelWidthAggregation(nn.Module):
+    def __init__(self, channel):
+        super().__init__()
+
+        self.conv = nn.Sequential(
+            nn.Conv2d(channel * 2, channel, kernel_size=1),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        # x: B,H,C,W
+
+        avg = torch.mean(x, dim=1, keepdim=True)          # B,1,C,W
+        maxv, _ = torch.max(x, dim=1, keepdim=True)       # B,1,C,W
+
+        feat = torch.cat([avg, maxv], dim=2)              # B,1,2C,W
+
+        feat = feat.squeeze(1)                            # B,2C,W
+        feat = feat.unsqueeze(2)                          # B,2C,1,W
+
+        attn = self.conv(feat)
+
+        return attn
 class DIA(nn.Module):
     """Dimension-wise Interactive Attention (DIA).
 
@@ -171,16 +194,10 @@ class DIA(nn.Module):
         self.v_proj = nn.Conv2d(channel, channel, 1)
 
         # A2: Channel-Width attention
-        self.cw_agg = nn.Sequential(
-            nn.AdaptiveAvgPool2d((None, 1)),
-            nn.Conv2d(channel, channel, 1),
-            nn.Sigmoid())
+        self.cw_agg = ChannelWidthAggregation(channel)
 
         # A3: Channel-Height attention
-        self.ch_agg = nn.Sequential(
-            nn.AdaptiveAvgPool2d((1, None)),
-            nn.Conv2d(channel, channel, 1),
-            nn.Sigmoid())
+        self.ch_agg = ChannelWidthAggregation(channel)
 
         self.proj_out = nn.Conv2d(channel, channel, 1)
 
