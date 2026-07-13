@@ -211,22 +211,16 @@ def trainValidateSegmentation(args):
     args.savedir = args.savedir + '_' + args.file_root + '_iter_' + str(args.max_steps) + '_lr_' + str(args.lr) + '/'
     args.vis_dir = args.savedir + '/Vis/'
 
-    if args.file_root == 'LEVIR':
-        args.file_root = "/media/cvpr/9ef49ce6-0406-42e1-85f2-9e767157906a/yzh/CD/LEVIR_256"
-    elif args.file_root == 'WHU':
-        args.file_root = '/media/cvpr/9ef49ce6-0406-42e1-85f2-9e767157906a/yzh/CD/WHU_256'
-    elif args.file_root == 'DSIFN':
-        args.file_root = '/media/cvpr/9ef49ce6-0406-42e1-85f2-9e767157906a/yzh/CD/DSIFN_256'
-    elif args.file_root == 'URBAN':
-        args.file_root = '/data3/yxy25/flood/UrbanSARFloods/UrbanSARFloods_v1/testing_case_256/dataset'
-    elif args.file_root == 'S1G':
-        args.file_root = "../S1G"#
+    if args.file_root == 'S1G':
+        args.file_root = "../S1G"
     elif args.file_root == 'etci':
         args.file_root = "./../../../data3/yxy25/etci_0306_RFANet"
+    elif args.file_root == 'URBAN':
+        args.file_root = '/data3/yxy25/flood/UrbanSARFloods/UrbanSARFloods_v1/testing_case_256/dataset'
     elif args.file_root == 'quick_start':
         args.file_root = './samples'
     else:
-        raise TypeError('%s has not defined' % args.file_root)
+        raise TypeError('%s has not defined. Supported datasets: S1G, etci, URBAN, quick_start' % args.file_root)
 
     if not os.path.exists(args.savedir):
         os.makedirs(args.savedir)
@@ -409,7 +403,7 @@ def trainValidateSegmentation(args):
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument('--file_root', default="URBAN", help='Data directory | LEVIR | WHU | CDD | SYSU ')
+    parser.add_argument('--file_root', default="S1G", help='Data directory | S1G | etci | URBAN | quick_start')
     parser.add_argument('--inWidth', type=int, default=256, help='Width of RGB image')
     parser.add_argument('--inHeight', type=int, default=256, help='Height of RGB image')
     parser.add_argument('--max_steps', type=int, default=40, help='Max. number of iterations')
