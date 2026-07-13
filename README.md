@@ -101,7 +101,7 @@ python ./train_test_tools/train.py \
 **Key hyperparameters:**
 
 | Parameter | Default | Description |
-|:----------|:--------|:------------|
+| `--file_root` | — | Dataset name (`S1G`, `etci`, `URBAN`, `quick_start`) |
 | `--lr` | `5e-4` | Initial learning rate |
 | `--max_steps` | `40000` | Total training iterations |
 | `--batch_size` | `16` | Batch size per GPU |
