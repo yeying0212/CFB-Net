@@ -5,8 +5,6 @@
 >
 > **Code Repository:** [https://github.com/yeying0212/CFB_Net](https://github.com/yeying0212/CFB_Net)
 
-This repository contains the official PyTorch implementation of **CFB-Net**, a lightweight cross-level frequency-domain boundary-aware network for bi-temporal SAR flood detection. CFB-Net introduces a **Cross-Level Semantic-Guided Frequency Boundary-Aware (CSFB)** module and a **Multi-Scale Semantic-Aware Bottleneck (MSAB)** module to enhance the perception of irregular-boundary floods while suppressing false alarms caused by weak-scattering interference. The repository also provides unified implementations of **12 state-of-the-art change detection methods** for fair benchmarking.
-
 ---
 
 ## 1. Overview
