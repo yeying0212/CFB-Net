@@ -49,6 +49,21 @@ The experiments are conducted on two publicly available SAR flood detection data
 #### Dataset Structure
 
 Crop all datasets into 256×256 patches and organize as:
+### 3.1 Datasets
+
+The experiments are conducted on two publicly available SAR flood detection datasets:
+
+- **S1GFloods:** 5,360 pairs of pre-flood and post-flood Sentinel-1 SAR images (256×256), covering 46 flood events across 6 continents from 2015 to 2022. Split into train/val/test at 8:1:1 ratio.
+- **ETCI-2021:** Released for the NASA IMPACT ETCI 2021 Competition on Flood Detection. After data cleaning, 20,758 image pairs (256×256) spanning five geographic regions. Split into train/val/test at 8:1:1 ratio.
+
+> **📥 Dataset Download**
+> You can download the prepared datasets via Baidu Netdisk:
+> - **Link:** [Baidu Netdisk](https://pan.baidu.com/s/1Q12Dbl7dwDDS8424Ky14bw?pwd=vtr3)
+> - **Password:** `vtr3`
+
+#### Dataset Structure
+
+Crop all datasets into 256×256 patches and organize as:
 
 ```
 datasets/
